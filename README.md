@@ -40,7 +40,7 @@ These findings were produced using a small Python code involving two dependencie
 
 Using the same code, it may be possible to analyze a similar data from earlier elections to capture the change and trends in voter turnout, elections, and political orientation.
 
-One other possibility is to adapt the existing code to analyze voting trends according to county, to see which counties voted for which candidates.
+One other possibility is to adapt the existing code to analyze voting trends relative to each county, to see which counties voted for which candidates.
 
 
 

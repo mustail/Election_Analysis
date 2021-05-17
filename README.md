@@ -1,2 +1,2 @@
 # Election_analysis
-Python project
+Python project to summarize election results.

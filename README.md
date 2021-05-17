@@ -33,6 +33,8 @@ Three candidates received votes, all of whom are listed below with their votes i
 
 Diana DeGette won the election, receiving 73.8% (272,892) of the total vote.
 
+![Election audit output file](https://github.com/mustail/Election_analysis/blob/a0209a30ddc430910a2cfb96794858049302c613/Resources/election.png)
+
 ## Election audit summary
 These findings were produced using a small Python code involving two dependencies mentioned above. It can be reused to analyze similar election data. Other variables (e.g. voting method) may be added to the existing three (county, ballot id, candidate) to incorporate wider questions and offer a richer analysis. To be able to do this, the CSV file needs to include more columns, and the Python code should use more variables accordingly.
 

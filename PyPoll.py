@@ -43,27 +43,50 @@ with open(file_to_load) as election_data:
         candidate_votes[candidate_name] += 1
         
         
-print(winning_count) 
-print(candidate_options)    
-print(total_votes)
-print(candidate_votes)
+#print(winning_count) 
+#print(candidate_options)    
+#print(total_votes)
+#print(candidate_votes)
 
+with open(file_to_save, "w") as txt_file:
+    election_results = (
+        f"\nElection Results\n"
+        f"-------------------\n"
+        f"Total Votes: {total_votes:,}\n"
+        f"-------------------\n"
+    )
+    print(election_results, end="")
+    #save the final vote count to the text file.
+    txt_file.write(election_results)
 
-# determine the percentage of votes for each candidate by looping through the dict
-# iterate throught the candidate list
-for candidate_name in candidate_votes:
-    # retrieve vote count of a candidate
-    votes = candidate_votes[candidate_name]
-    # calculate the percentage of votes
-    vote_percentage = float(votes) / float(total_votes) * 100
-    # print the name of the candidate and the percentage
-    print(f"{candidate_name}: received {vote_percentage:.1f}% of the vote.")
-    # determine winning vote
-    # determine if the votes is greater than the winning count
-    if (votes > winning_count) and (vote_percentage > winning_percentage):
-        # if true, then set winning_count equal to votes and so on
-        winning_count = votes
-        winning_percentage = vote_percentage
-        winning_candidate = candidate_name
+    # determine the percentage of votes for each candidate by looping through the dict
+    # iterate throught the candidate list
+    for candidate_name in candidate_votes:
+        # retrieve vote count of a candidate
+        votes = candidate_votes[candidate_name]
+        # calculate the percentage of votes
+        vote_percentage = float(votes) / float(total_votes) * 100
+        # print the name of the candidate and the percentage
+        # print(f"{candidate_name} received {vote_percentage:.1f}% of the vote.\n")
+        candidate_results = (f"{candidate_name}: {vote_percentage:.1f}% ({votes:,})\n")
+        print(candidate_results)
+        txt_file.write(candidate_results)
 
-print(f"---------------------\n{winning_candidate} won the election\nwith {winning_count:,} number of votes\nequal to {winning_percentage:.1f}% of all votes.\n---------------------")
+        # determine winning vote
+        # determine if the votes is greater than the winning count
+        if (votes > winning_count) and (vote_percentage > winning_percentage):
+            # if true, then set winning_count equal to votes and so on
+            winning_count = votes
+            winning_percentage = vote_percentage
+            winning_candidate = candidate_name
+
+    winning_candidate_summary = (
+        f"--------------------------\n"
+        f"Winner : {winning_candidate}\n"
+        f"Winning vote count : {winning_count:,}\n"
+        f"Winning percentage : {winning_percentage:.1f}\n"
+        f"--------------------------\n"
+        )
+    print(winning_candidate_summary)
+    txt_file.write(winning_candidate_summary)
+    # print(f"---------------------\n{winning_candidate} won the election\nwith {winning_count:,} number of votes\nequal to {winning_percentage:.1f}% of all votes.\n---------------------")
